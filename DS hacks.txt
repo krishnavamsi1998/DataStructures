@@ -1,0 +1,408 @@
+hash - best - O(1), worst-O(n)
+fibonacii- recursive-O(2**n), iterative-O(n)
+fibonacii- recursive-O(n), iterative-O(n)
+prime -O(n**2),dp-O(n)
+
+Data Structures 
+
+Data structures represent the way of arranging data in computer,
+so that it can be accessed and used efficiently.
+
+There are two types of data structures :
+
+1.Linear data structures.
+2.Non Linear data structures.
+
+1.Linear data structures
+
+a.Array
+b.Linked List
+c.Stack
+d.Queue
+
+2.Non-Linear data structures
+
+a.Tree
+b.Graph
+c.Hash Table
+
+Stack vs Heap 
+
+stack : contiguos memory allocation
+static memory allocations
+used to store memory calls
+int a[10];
+
+heap : Dynamic memory allocation
+allocated by a programmer
+int *ptr  = new int[10]; 
+
+
+1.List :
+
+A list is a Linear data structure used to store sequence of values 
+can grow and shrink dynamically based on need.
+
+list is going to have frequent additions and deletions, 
+it may not be a good choice to implement it using arrays.
+ 
+here is one more implementation for list which is using Linked List.
+
+
+2.Linked lists:
+
+A linked list consists of a group of nodes which together represent a sequence or a list. 
+
+The first node in the list is known as head node and the last node is known as tail node. 
+
+class Node:
+    def __init__(self,data):
+        self.__data=data
+        self.__next=None
+
+    def get_data(self):
+        return self.__data
+
+    def set_data(self,data):
+        self.__data=data
+
+    def get_next(self):
+        return self.__next
+
+    def set_next(self,next_node):
+        self.__next=next_node
+
+item_node=Node("Sugar")
+print(item_node.get_data())
+
+
+display algorithm():
+
+
+1. Call the head node as temp
+2. While temp is not None,
+   a. Display temp’s data
+   b. Make the next node as temp.
+
+
+Implementation of linked list uses aggregation, the object oriented relationship.
+
+Stack :
+
+LAST IN FIRST OUT
+
+push(data):
+
+1. Check whether the stack is full. If full, display appropriate message
+2. If not,
+   a. increment top by one
+   b. Add the element at top position in the elements array
+
+pop():
+
+1. Check whether the stack is empty. If empty, display appropriate message
+2. If not,
+   a. Retrieve data at the top of the stack
+   b. Decrement top by 1
+   c. Return the retrieved data
+
+IMPLEMENTATION OF STACK:
+
+text editors(ctrl+Z)(Ctrl+y)
+
+QUEUE:(FIFO)
+
+Enqueue : Add an element at the rear end of the queue.
+
+Dequeue : Remove an element at the front end of the queue.
+
+Initially rear=-1,front=0
+
+ENQUEUE:
+
+enqueue (data):
+
+1. Check whether queue is full. If full, display appropriate message
+2. If not,
+   a. increment rear by one
+   b. Add the element at rear position in the elements array
+
+dequeue()
+1. Check whether the queue is empty. If it is empty, display appropriate message
+2. If not,
+   a. Retrieve data at the front of the queue
+   b. Increment front by 1
+   c. Return the retrieved data
+
+QUEUE PROGRAM :
+
+class Queue:
+    def __init__(self,max_size):
+        self.__max_size=max_size
+        self.__elements=[None]*self.__max_size
+        self.__rear=-1
+        self.__front=0
+
+    def is_full(self):
+        if(self.__rear==self.__max_size-1):
+                return True
+        return False
+
+    def is_empty(self):
+        if(self.__front>self.__rear):
+            return True
+        return False
+
+    def enqueue(self,data):
+        if(self.is_full()):
+            print("Queue is full!!!")
+        else:
+            self.__rear+=1
+            self.__elements[self.__rear]=data
+
+    def dequeue(self):
+        if(self.is_empty()):
+            print("Queue is empty!!!")
+        else:
+            data=self.__elements[self.__front]
+            self.__front+=1
+            return data
+
+    def display(self):
+        for index in range(self.__front, self.__rear+1):
+            print(self.__elements[index])
+
+    def get_max_size(self):
+        return self.__max_size
+                                        
+    #You can use the below __str__() to print the elements of the DS object while debugging
+    def __str__(self):
+        msg=[]
+        index=self.__front
+        while(index<=self.__rear):
+            msg.append((str)(self.__elements[index]))
+            index+=1
+        msg=" ".join(msg)
+        msg="Queue data(Front to Rear): "+msg
+        return msg
+
+def send_for_print(doc):
+    global print_queue
+    if(print_queue.is_full()):
+        print("Queue is full")
+    else:
+        print_queue.enqueue(doc)
+        print(doc,"sent for printing")
+
+
+def start_printing():
+    global print_queue
+    while(not print_queue.is_empty()):
+        doc=print_queue.dequeue()
+        global pages_in_printer
+        for i in range(0,len(doc)):
+            if(doc[i]=="-"):
+                no_of_pages=int(doc[i+1:])
+                break
+        if(no_of_pages<=pages_in_printer):
+            print(doc,"printed")
+            pages_in_printer-=no_of_pages
+            print("Remaining no. of pages in printer:", pages_in_printer)
+        else:
+            print("Couldn't print",doc[:i],". Not enough pages in the printer.")
+
+     
+
+pages_in_printer=12
+print_queue=Queue(10)
+send_for_print("doc1-5")
+send_for_print("doc2-3")
+send_for_print("doc3-6")
+start_printing()
+
+GRAPHS:
+
+Graph is a non-linear data structure,
+having a set of vertices(or nodes) and edges between vertices.
+
+IMPLEMENTATION:
+1.network.
+2.routes.
+3.Google maps.
+4.Facebook.
+
+
+TREES
+
+IMPLEMENTATION :
+1.Family Tree.
+2.Comapny
+3.DIRECTORIES(Folders,subfolders)
+
+STACK CLASS:
+class Stack:
+    def __init__(self,max_size):
+        self.__max_size=max_size
+        self.__elements=[None]*self.__max_size
+        self.__top=-1
+    
+    def is_full(self):
+        if(self.__top==self.__max_size-1):
+            return True
+        return False
+    
+    def is_empty(self):
+        if(self.__top==-1): 
+            return True
+        return False
+    
+    def push(self,data):
+        if(self.is_full()):
+            print("The stack is full!!")
+        else:
+            self.__top+=1
+            self.__elements[self.__top]=data
+    
+    def pop(self):
+        if(self.is_empty()):
+            print("The stack is empty!!")
+        else:
+            data= self.__elements[self.__top]
+            self.__top-=1
+        return data
+    
+    def display(self):
+        if(self.is_empty()):
+            print("The stack is empty")
+        else:
+            index=self.__top
+            while(index>=0):
+                print(self.__elements[index])
+                index-=1
+    
+    def get_top(self):
+        return self.__top
+    
+    def get_max_size(self):
+        return self.__max_size
+                                        
+    #You can use the below __str__() to print the elements of the DS object while debugging
+    def __str__(self):
+        msg=[]
+        index=self.__top
+        while(index>=0):
+            msg.append((str)(self.__elements[index]))
+            index-=1
+        msg=" ".join(msg)
+        msg="Stack data(Top to Bottom): "+msg
+        return msg   
+                                        
+                                                
+class Queue:
+    def __init__(self,max_size):
+        self.__max_size=max_size
+        self.__elements=[None]*self.__max_size
+        self.__rear=-1
+        self.__front=0
+
+    def is_full(self):
+        if(self.__rear==self.__max_size-1):
+            return True
+        return False
+
+    def is_empty(self):
+        if(self.__front>self.__rear):
+            return True
+        return False
+
+    def enqueue(self,data):
+        if(self.is_full()):
+            print("Queue is full!!!")
+        else:
+            self.__rear+=1
+            self.__elements[self.__rear]=data
+
+    def dequeue(self):
+        if(self.is_empty()):
+            print("Queue is empty!!!")
+        else:
+            data=self.__elements[self.__front]
+            self.__front+=1
+            return data
+
+    def display(self):
+        for index in range(self.__front, self.__rear+1):
+            print(self.__elements[index])
+
+    def get_front(self):
+        return self.__front
+
+    def get_rear(self):
+        return self.__rear
+
+    def get_max_size(self):
+        return self.__max_size
+                                        
+    #You can use the below __str__() to print the elements of the DS object while debugging
+    def __str__(self):
+        msg=[]
+        index=self.__front
+        while(index<=self.__rear):
+            msg.append((str)(self.__elements[index]))
+            index+=1
+        msg=" ".join(msg)
+        msg="Queue data(Front to Rear): "+msg
+        return msg
+
+
+
+def fun(input_stack):
+    output_queue=Queue(input_stack.get_max_size())
+    temp_queue=Queue(input_stack.get_max_size())
+    while(not input_stack.is_empty()):
+        data=input_stack.pop()
+        if(data%2==0):
+            output_queue.enqueue(data)
+        else:
+            temp_queue.enqueue(data)
+    temp_data=0
+    while(not temp_queue.is_empty()):
+        temp_data+=temp_queue.dequeue()
+        output_queue.enqueue(temp_data)
+    output_queue.display()
+
+sample= Stack(5)
+sample.push(3)
+sample.push(7)
+sample.push(2)
+sample.push(5)
+sample.push(1)
+fun(sample)
+
+SORTING TECHNIQUES:
+
+1.Selection sort:
+
+Find the smallest number and swap it with the number at the first position in the list.
+Find the next smallest number and swap it with the number at the second position in the list.
+Find the next smallest number and swap it with the number at the third position in the list.
+Continue doing it until you are done with the number at the last position in the list.
+**NO.of passes =(n-1)
+This strategy of sorting is known as Selection Sort. Like linear search, technique followed here is also Brute-Force.
+
+2.BUbble sort 
+
+NO.of swaps=no.of passes
+
+3.MERge sort:
+
+IT requires more memory.
+
+
+
+
+
+
+
+
+                              

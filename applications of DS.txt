@@ -1,0 +1,71 @@
+Applications of stack :
+
+Used by the compiler in order to check the syntax
+it usd in paranthesis checking
+
+i ) conversion of infix to postfix expression
+    the converted expressions can be easily evaluated by the compiler.  
+
+ii ) Delimiter checking
+
+iii ) Recursion
+
+iv ) Undo functions 
+
+QUEUE :
+
+1.FCFS a process scheduling algorithms where
+cpu serves the process which comes first.
+
+2.Printer
+
+3.Download any file from internet
+
+
+Hash Table - data base, compilers (symbol tables),password
+
+
+Trie - dictionary, such as one found on a mobile telephone for autocompletion and spell-checking.
+
+Suffix tree - fast full text searches used in most word processors.
+
+
+Priority queues - process scheduling in the kernel
+
+Trees -Foldersystem in computers,Networks to 
+find shortest routing
+
+bst :
+
+express arithmetic expressions
+managing virtual memory Areas 
+indexing IP addresses.
+
+
+Graphs - Connections/relations in social networking sites,
+ Routing ,networks of communication, data organization etc.
+
+Google maps uses graphs for building transportation systems, where intersection of two(or more) roads are considered to be a vertex 
+and the road connecting two vertices is considered to be an edge
+
+Facebook’s Friend suggestion algorithm uses graph theory.
+Facebook is an example of undirected graph.
+
+web pages are considered to be the vertices.
+ There is an edge from a page u to other page v 
+
+I Operating System, we come across the Resource Allocation Graph where each process 
+and resources are considered to be vertices.
+
+
+
+
+
+
+
+
+
+
+
+
+
